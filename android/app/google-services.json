@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "838400646292",
+    "project_id": "in-my-lane-app",
+    "storage_bucket": "in-my-lane-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:838400646292:android:37868163cf341437ee6881",
+        "android_client_info": {
+          "package_name": "com.example.my_new_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "838400646292-sc9cmub0hmjqot1fvhf292muuaosrndc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAjLqqbczQ6aELSwBa_6jeOsk5QeRS_wMw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "838400646292-sc9cmub0hmjqot1fvhf292muuaosrndc.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
