@@ -110,7 +110,7 @@ class _FlashcardsScreenState extends State<FlashcardsScreen> {
     {
       'question': 'Which of these signs is used to show the end of a divided highway?',
       'image': 'assets/2_19.png',  // Local image
-      'answer': 'End of divided highway.'
+      'answer': '2. End of divided highway.'
     },
   ];
 
