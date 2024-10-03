@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart'; // Importing SVG package
 import '../widgets/background_scaffold.dart';
 
 class DrivingRulesScreen extends StatelessWidget {
@@ -14,12 +13,12 @@ class DrivingRulesScreen extends StatelessWidget {
     },
     {
       'title': 'You are making a left turn from a two-way street into a multilane one-way street.',
-      'image': 'https://driver-start.com/images/questions/s38.svg',
+      'image': 'assets/s38.png', // Local image
       'description': 'In the left lane of the street.',
     },
     {
       'title': 'A red and white triangular sign at an intersection means:',
-      'image': 'https://driver-start.com/images/questions/s15.svg',
+      'image': 'assets/s15.png', // Local image
       'description': 'Slow down and be prepared to stop if necessary.',
     },
     {
@@ -88,7 +87,7 @@ class DrivingRulesScreen extends StatelessWidget {
     },
     {
       'title': 'What does this sign mean?',
-      'image': 'https://driver-start.com/images/questions/s40.svg',
+      'image': 'assets/s40.png', // Local image
       'description': '270-degree turn.',
     },
     {
@@ -105,7 +104,7 @@ class DrivingRulesScreen extends StatelessWidget {
     },
     {
       'title': 'This sign means that:',
-      'image': 'https://driver-start.com/images/questions/2_42.svg',
+      'image': 'assets/2_42.png', // Local image
       'description': 'Workers are on or very close to the road in the work zone ahead.',
     },
     {
@@ -114,7 +113,7 @@ class DrivingRulesScreen extends StatelessWidget {
     },
     {
       'title': 'This sign is used to warn drivers about:',
-      'image': 'https://driver-start.com/images/questions/s1.svg',
+      'image': 'assets/s1.png', // Local image
       'description': 'Lane ends, merge left.',
     },
     {
@@ -127,7 +126,7 @@ class DrivingRulesScreen extends StatelessWidget {
     },
     {
       'title': 'Suppose you are turning left into a driveway. What must you do before you continue?',
-      'image': 'https://driver-start.com/images/questions/s44.svg',
+      'image': 'assets/s44.png', // Local image
       'description': 'Wait for pedestrians and traffic.',
     },
     {
@@ -164,7 +163,7 @@ class DrivingRulesScreen extends StatelessWidget {
     },
     {
       'title': 'What does this sign mean?',
-      'image': 'https://driver-start.com/images/questions/s24.svg',
+      'image': 'assets/s24.png', // Local image
       'description': 'Sharp turn ahead.',
     },
     {
@@ -177,8 +176,8 @@ class DrivingRulesScreen extends StatelessWidget {
     },
     {
       'title': 'Which car is NOT using the circle correctly?',
-      'image': 'https://driver-start.com/images/questions/s30.svg',
-      'description': 'C',
+      'image': 'assets/s30.png', // Local image
+      'description': 'C.',
     },
     {
       'title': 'Drinking coffee after drinking alcohol:',
@@ -194,7 +193,7 @@ class DrivingRulesScreen extends StatelessWidget {
     },
     {
       'title': 'It is against the law for anyone under the age of 21 to _____ alcohol.',
-      'description': 'Consume',
+      'description': 'Consume.',
     },
     {
       'title': 'When signing for their child under 18 years of age, parents are indicating that:',
@@ -217,13 +216,13 @@ class DrivingRulesScreen extends StatelessWidget {
       'description': 'Have lost control of your car.',
     },
     {
-      'title': 'A chemical test is used to measure...',
+      'title': 'A chemical test is used to measure:',
       'description': 'Blood Alcohol Concentration (BAC).',
     },
     {
       'title': 'The car "B" is in the intersection, turning right on the red light. However, car "A" comes with a green light. Which of the car should yield?',
-      'image': 'https://driver-start.com/images/questions/s32.svg',
-      'description': 'Car "A" should yield the car "B," as Car "B" is already at the intersection.',
+      'image': 'assets/s32.png', // Local image
+      'description': 'Car "A" should yield to car "B," as Car "B" is already at the intersection.',
     },
     {
       'title': 'Minimum speed signs are designed to:',
@@ -246,7 +245,7 @@ class DrivingRulesScreen extends StatelessWidget {
       'description': 'Judgment.',
     },
     {
-      'title': 'Why is driving on an expressway different from driving on an ordinary street:',
+      'title': 'Why is driving on an expressway different from driving on an ordinary street?',
       'description': 'You must think faster and handle your vehicle more effectively.',
     },
     {
@@ -260,64 +259,6 @@ class DrivingRulesScreen extends StatelessWidget {
     {
       'title': 'You may cross a double solid yellow line:',
       'description': 'To turn left into a driveway.',
-    },
-    {
-      'title': 'Which of these signs is used to show the end of a divided highway?',
-      'image': 'https://driver-start.com/images/questions/2_19.svg',
-      'description': 'End of divided highway.',
-    },
-    {
-      'title': 'A reckless driver is a driver who:',
-      'description': 'Drives with a willful and wanton disregard for the safety of others.',
-    },
-    {
-      'title': 'Teenage drivers are more likely to be involved in a crash when:',
-      'description': 'They are driving with teenage passengers.',
-    },
-    {
-      'title': 'Drivers who eat and drink while driving _____',
-      'description': 'Have trouble controlling their vehicles.',
-    },
-    {
-      'title': 'Before you leave a parking space that is parallel to the curb, you should:',
-      'description': 'Look for traffic by turning your head.',
-    },
-    {
-      'title': 'Assuming that the street is level, what should you do after you have finished parallel parking in a space between two other cars:',
-      'description': 'Straighten your front wheels and leave room between cars.',
-    },
-    {
-      'title': 'At dusk or on overcast days, you should:',
-      'description': 'Turn on your headlights so other drivers can see your vehicle.',
-    },
-    {
-      'title': 'Vehicle horns must be heard to:',
-      'description': 'Warn other drivers of danger.',
-    },
-    {
-      'title': 'What effect might alcohol and another drug have when combined in your blood?',
-      'description': 'Increase the effects of both.',
-    },
-    {
-      'title': 'When a driver passing you honks his horn, you should:',
-      'description': 'Give him room to pass.',
-    },
-    {
-      'title': 'How many minutes does the body need to process the alcohol in one drink for an average person?',
-      'description': '60 minutes.',
-    },
-    {
-      'title': 'Two cars are turning left at the intersection. By the rules, which of the cars is turning into the correct lane?',
-      'image': 'https://driver-start.com/images/questions/s38.svg',
-      'description': 'Blue "B".',
-    },
-    {
-      'title': 'Before you may get a learner’s license, you must:',
-      'description': 'Pass the written test.',
-    },
-    {
-      'title': 'If the rear of your vehicle starts to skid left, you should:',
-      'description': 'Steer left.',
     },
   ];
 
@@ -340,10 +281,11 @@ class DrivingRulesScreen extends StatelessWidget {
                 children: [
                   if (_rules[index].containsKey('image')) ...[
                     SizedBox(height: 10),
-                    SvgPicture.network(
-                      _rules[index]['image']!,
+                    Image.asset(
+                      _rules[index]['image']!, // Load local image
                       height: 100,
-                      placeholderBuilder: (context) => CircularProgressIndicator(),
+                      errorBuilder: (context, error, stackTrace) =>
+                          const Text('Image not found'),
                     ),
                   ],
                   SizedBox(height: 10),

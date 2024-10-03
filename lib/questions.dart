@@ -136,7 +136,7 @@ List<Map<String, Object>> generalQuestions = [
 List<Map<String, Object>> roadSignsQuestions = [
   {
     'question': 'You are making a left turn from a two-way street into a multilane one-way street. When you have completed the turn, your car should be:',
-    'image': 'https://driver-start.com/images/questions/s38.svg',
+    'image': 'assets/s38.png', // Local image
     'answers': [
       {'text': 'In the right lane', 'score': 0},
       {'text': 'In the left lane of the street', 'score': 1},
@@ -145,7 +145,7 @@ List<Map<String, Object>> roadSignsQuestions = [
   },
   {
     'question': 'A red and white triangular sign at an intersection means:',
-    'image': 'https://driver-start.com/images/questions/s15.svg',
+    'image': 'assets/s15.png', // Local image
     'answers': [
       {'text': 'Yield to traffic on the right', 'score': 0},
       {'text': 'Come to a full stop', 'score': 0},
@@ -154,7 +154,7 @@ List<Map<String, Object>> roadSignsQuestions = [
   },
   {
     'question': 'What does this sign mean?',
-    'image': 'https://driver-start.com/images/questions/s40.svg',
+    'image': 'assets/s40.png', // Local image
     'answers': [
       {'text': 'Sharp left turn', 'score': 0},
       {'text': 'U-turn', 'score': 0},
@@ -163,7 +163,7 @@ List<Map<String, Object>> roadSignsQuestions = [
   },
   {
     'question': 'This sign means that:',
-    'image': 'https://driver-start.com/images/questions/2_42.svg',
+    'image': 'assets/2_42.png', // Local image
     'answers': [
       {'text': 'Workers are on or very close to the road in the work zone ahead', 'score': 1},
       {'text': 'Detour ahead', 'score': 0},
@@ -172,7 +172,7 @@ List<Map<String, Object>> roadSignsQuestions = [
   },
   {
     'question': 'This sign is used to warn drivers about:',
-    'image': 'https://driver-start.com/images/questions/s1.svg',
+    'image': 'assets/s1.png', // Local image
     'answers': [
       {'text': 'Narrow bridge ahead', 'score': 0},
       {'text': 'Right lane ends', 'score': 0},
@@ -181,7 +181,7 @@ List<Map<String, Object>> roadSignsQuestions = [
   },
   {
     'question': 'Suppose you are turning left into a driveway. What must you do before you continue?',
-    'image': 'https://driver-start.com/images/questions/s44.svg',
+    'image': 'assets/s44.png', // Local image
     'answers': [
       {'text': 'Wait for pedestrians and traffic', 'score': 1},
       {'text': 'Proceed cautiously', 'score': 0},
@@ -190,7 +190,7 @@ List<Map<String, Object>> roadSignsQuestions = [
   },
   {
     'question': 'What does this sign mean?',
-    'image': 'https://driver-start.com/images/questions/s24.svg',
+    'image': 'assets/s24.png', // Local image
     'answers': [
       {'text': 'Sharp turn ahead', 'score': 1},
       {'text': 'Curve ahead', 'score': 0},
@@ -199,7 +199,7 @@ List<Map<String, Object>> roadSignsQuestions = [
   },
   {
     'question': 'Which car is NOT using the circle correctly?',
-    'image': 'https://driver-start.com/images/questions/s30.svg',
+    'image': 'assets/s30.png', // Local image
     'answers': [
       {'text': 'Car A', 'score': 0},
       {'text': 'Car B', 'score': 0},
@@ -208,7 +208,7 @@ List<Map<String, Object>> roadSignsQuestions = [
   },
   {
     'question': 'The car "B" is in the intersection, turning right on the red light. However, car "A" comes with a green light. Which of the cars should yield?',
-    'image': 'https://driver-start.com/images/questions/s32.svg',
+    'image': 'assets/s32.png', // Local image
     'answers': [
       {'text': 'Car "A" should yield to car "B"', 'score': 1},
       {'text': 'Car "B" should yield to car "A"', 'score': 0},
@@ -217,7 +217,7 @@ List<Map<String, Object>> roadSignsQuestions = [
   },
   {
     'question': 'Which of these signs is used to show the end of a divided highway?',
-    'image': 'https://driver-start.com/images/questions/2_19.svg',
+    'image': 'assets/2_19.png', // Local image
     'answers': [
       {'text': 'Sign 1', 'score': 0},
       {'text': 'Sign 2', 'score': 1},

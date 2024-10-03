@@ -3,7 +3,6 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:cloud_firestore/cloud_firestore.dart'; // Import Firestore
 import 'package:firebase_auth/firebase_auth.dart'; // Import Firebase Auth
 import 'package:in_my_lane/widgets/background_scaffold.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 class QuizScreen extends StatefulWidget {
   final String quizTitle;
@@ -105,21 +104,12 @@ class _QuizScreenState extends State<QuizScreen> {
 
                   // Display image if available
                   if (widget.questions[_currentQuestionIndex].containsKey('image'))
-                    if ((widget.questions[_currentQuestionIndex]['image'] as String).endsWith('.svg'))
-                      SvgPicture.network(
-                        widget.questions[_currentQuestionIndex]['image'] as String,
-                        height: 200,
-                        width: double.infinity,
-                        fit: BoxFit.contain, // Ensures the image maintains aspect ratio
-                        placeholderBuilder: (BuildContext context) => CircularProgressIndicator(),
-                      )
-                    else
-                      Image.network(
-                        widget.questions[_currentQuestionIndex]['image'] as String,
-                        height: 200,
-                        width: double.infinity,
-                        fit: BoxFit.contain, // Ensures the image maintains aspect ratio
-                      ),
+                    Image.asset(
+                      widget.questions[_currentQuestionIndex]['image'] as String,
+                      height: 200,
+                      width: double.infinity,
+                      fit: BoxFit.contain, // Ensures the image maintains aspect ratio
+                    ),
                   SizedBox(height: 20),
 
                   ...(widget.questions[_currentQuestionIndex]['answers'] as List<Map<String, Object>>).map((answer) {
