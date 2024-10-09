@@ -147,6 +147,7 @@ class _TeacherDashboardState extends State<TeacherDashboard> {
                                           subtitle: percentage >= 70
                                               ? Text('Goal Met', style: TextStyle(color: Colors.green))
                                               : Text('Goal Not Met', style: TextStyle(color: Colors.red)),
+                                          Text('Taken on: $timestamp'),
                                         );
                                       }).toList(),
                                     );
