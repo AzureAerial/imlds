@@ -136,8 +136,7 @@ class _TeacherDashboardState extends State<TeacherDashboard> {
                                         final score = quizData['score']?.toDouble() ?? 0.0;
                                         final totalQuestions = quizData['totalQuestions']?.toInt() ?? 1;
                                         final percentage = (score / totalQuestions) * 100;
-                                        final timestamp = (quizData['timestamp'] as Timestamp).toDate();
-                                        final formattedDate = "${timestamp.year}-${timestamp.month.toString().padLeft(2, '0')}-${timestamp.day.toString().padLeft(2, '0')} ${timestamp.hour}:${timestamp.minute.toString().padLeft(2, '0')}";
+                                        final timestamp = (quizData['timestamp'] as Timestamp?)?.toDate();
 
                                         return ListTile(
                                           title: Text('${quizData['quizTitle']}: ${percentage.toStringAsFixed(1)}%'),
@@ -147,7 +146,8 @@ class _TeacherDashboardState extends State<TeacherDashboard> {
                                               percentage >= 70
                                                   ? Text('Goal Met', style: TextStyle(color: Colors.green))
                                                   : Text('Goal Not Met', style: TextStyle(color: Colors.red)),
-                                              Text('Taken on: $formattedDate'),
+                                              if (timestamp != null)
+                                                Text('Taken on: ${timestamp.toLocal().toString()}'),
                                             ],
                                           ),
                                         );
@@ -186,8 +186,7 @@ class _TeacherDashboardState extends State<TeacherDashboard> {
                                         final testData = test.data() as Map<String, dynamic>;
                                         final score = testData['score']?.toDouble() ?? 0.0;
                                         final percentage = score;
-                                        final timestamp = (testData['timestamp'] as Timestamp).toDate();
-                                        final formattedDate = "${timestamp.year}-${timestamp.month.toString().padLeft(2, '0')}-${timestamp.day.toString().padLeft(2, '0')} ${timestamp.hour}:${timestamp.minute.toString().padLeft(2, '0')}";
+                                        final timestamp = (testData['timestamp'] as Timestamp?)?.toDate();
 
                                         return ListTile(
                                           title: Text('Score: ${percentage.toStringAsFixed(1)}%'),
@@ -197,7 +196,8 @@ class _TeacherDashboardState extends State<TeacherDashboard> {
                                               percentage >= 70
                                                   ? Text('Goal Met', style: TextStyle(color: Colors.green))
                                                   : Text('Goal Not Met', style: TextStyle(color: Colors.red)),
-                                              Text('Taken on: $formattedDate'),
+                                              if (timestamp != null)
+                                                Text('Taken on: ${timestamp.toLocal().toString()}'),
                                             ],
                                           ),
                                         );
