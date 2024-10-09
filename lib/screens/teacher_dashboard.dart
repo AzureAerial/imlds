@@ -57,14 +57,12 @@ class _TeacherDashboardState extends State<TeacherDashboard> {
                     return Center(child: CircularProgressIndicator());
                   }
 
-                  // Get a list of documents (students) from Firestore
                   final students = snapshot.data?.docs ?? [];
 
                   if (students.isEmpty) {
                     return Center(child: Text('No students found.'));
                   }
 
-                  // Display each student's information in a ListView
                   return ListView.builder(
                     itemCount: students.length,
                     itemBuilder: (context, index) {
@@ -76,7 +74,7 @@ class _TeacherDashboardState extends State<TeacherDashboard> {
                       final nightHours = studentData.containsKey('nightHours')
                           ? studentData['nightHours'].toDouble()
                           : 0.0;
-                      final studentId = students[index].id; // We need the student ID to fetch the subcollection
+                      final studentId = students[index].id;
 
                       return ExpansionTile(
                         title: Text(studentName),
@@ -93,19 +91,16 @@ class _TeacherDashboardState extends State<TeacherDashboard> {
                                   style: TextStyle(fontWeight: FontWeight.bold),
                                 ),
                                 SizedBox(height: 5),
-                                // Label and progress bar for total driving hours
-                                Text(
-                                    'Total Driving Hours: ${totalHours.toStringAsFixed(2)} / 60'),
+                                Text('Total Driving Hours: ${totalHours.toStringAsFixed(2)} / 60'),
                                 LinearProgressIndicator(
-                                  value: totalHours / 60, // Goal: 60 hours
+                                  value: totalHours / 60,
                                   backgroundColor: Colors.grey[200],
                                   color: Colors.blue,
                                 ),
                                 SizedBox(height: 10),
-                                Text(
-                                    'Night Driving Hours: ${nightHours.toStringAsFixed(2)} / 10'),
+                                Text('Night Driving Hours: ${nightHours.toStringAsFixed(2)} / 10'),
                                 LinearProgressIndicator(
-                                  value: nightHours / 10, // Goal: 10 hours
+                                  value: nightHours / 10,
                                   backgroundColor: Colors.grey[200],
                                   color: Colors.blue,
                                 ),
@@ -141,13 +136,20 @@ class _TeacherDashboardState extends State<TeacherDashboard> {
                                         final score = quizData['score']?.toDouble() ?? 0.0;
                                         final totalQuestions = quizData['totalQuestions']?.toInt() ?? 1;
                                         final percentage = (score / totalQuestions) * 100;
+                                        final timestamp = (quizData['timestamp'] as Timestamp).toDate();
+                                        final formattedDate = "${timestamp.year}-${timestamp.month.toString().padLeft(2, '0')}-${timestamp.day.toString().padLeft(2, '0')} ${timestamp.hour}:${timestamp.minute.toString().padLeft(2, '0')}";
 
                                         return ListTile(
                                           title: Text('${quizData['quizTitle']}: ${percentage.toStringAsFixed(1)}%'),
-                                          subtitle: percentage >= 70
-                                              ? Text('Goal Met', style: TextStyle(color: Colors.green))
-                                              : Text('Goal Not Met', style: TextStyle(color: Colors.red)),
-                                          Text('Taken on: $timestamp'),
+                                          subtitle: Column(
+                                            crossAxisAlignment: CrossAxisAlignment.start,
+                                            children: [
+                                              percentage >= 70
+                                                  ? Text('Goal Met', style: TextStyle(color: Colors.green))
+                                                  : Text('Goal Not Met', style: TextStyle(color: Colors.red)),
+                                              Text('Taken on: $formattedDate'),
+                                            ],
+                                          ),
                                         );
                                       }).toList(),
                                     );
@@ -159,11 +161,10 @@ class _TeacherDashboardState extends State<TeacherDashboard> {
                                   style: TextStyle(fontWeight: FontWeight.bold),
                                 ),
                                 SizedBox(height: 10),
-                                // Fetch the external practice test scores
                                 StreamBuilder<QuerySnapshot>(
                                   stream: _usersCollection
                                       .doc(studentId)
-                                      .collection('externalScores') // Update collection name here
+                                      .collection('externalScores')
                                       .snapshots(),
                                   builder: (context, practiceScoreSnapshot) {
                                     if (practiceScoreSnapshot.hasError) {
@@ -186,6 +187,7 @@ class _TeacherDashboardState extends State<TeacherDashboard> {
                                         final score = testData['score']?.toDouble() ?? 0.0;
                                         final percentage = score;
                                         final timestamp = (testData['timestamp'] as Timestamp).toDate();
+                                        final formattedDate = "${timestamp.year}-${timestamp.month.toString().padLeft(2, '0')}-${timestamp.day.toString().padLeft(2, '0')} ${timestamp.hour}:${timestamp.minute.toString().padLeft(2, '0')}";
 
                                         return ListTile(
                                           title: Text('Score: ${percentage.toStringAsFixed(1)}%'),
@@ -195,7 +197,7 @@ class _TeacherDashboardState extends State<TeacherDashboard> {
                                               percentage >= 70
                                                   ? Text('Goal Met', style: TextStyle(color: Colors.green))
                                                   : Text('Goal Not Met', style: TextStyle(color: Colors.red)),
-                                              Text('Taken on: $timestamp'),
+                                              Text('Taken on: $formattedDate'),
                                             ],
                                           ),
                                         );
