@@ -154,7 +154,7 @@ class _QuizScreenState extends State<QuizScreen> {
                           '${incorrect['question']}\n'
                           'Your Answer: ${incorrect['selectedAnswer']}\n'
                           'Correct Answer: ${incorrect['correctAnswer']}\n',
-                          style: TextStyle(fontSize: 16, color: Colors.red),
+                          style: TextStyle(fontSize: 20, color: const Color.fromARGB(255, 255, 191, 187)),
                         ),
                       )),
                     ],
