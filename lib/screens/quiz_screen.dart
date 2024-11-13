@@ -18,7 +18,7 @@ class _QuizScreenState extends State<QuizScreen> {
   int _currentQuestionIndex = 0;
   int _score = 0;
   List<String> _scoreHistory = [];
-  List<Map<String, dynamic>> _incorrectAnswers = []; // Track incorrect answers
+  List<Map<String, dynamic>> _incorrectAnswers = [];
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
   @override
@@ -57,7 +57,6 @@ class _QuizScreenState extends State<QuizScreen> {
     _scoreHistory.add('Score: $score/${widget.questions.length}');
     await prefs.setStringList('${widget.quizTitle}_scoreHistory', _scoreHistory);
 
-    // Also save the score to Firebase
     await _saveScoreToFirebase(score);
   }
 
@@ -86,7 +85,7 @@ class _QuizScreenState extends State<QuizScreen> {
     setState(() {
       _currentQuestionIndex = 0;
       _score = 0;
-      _incorrectAnswers.clear(); // Clear incorrect answers when restarting
+      _incorrectAnswers.clear();
     });
   }
 
@@ -100,72 +99,148 @@ class _QuizScreenState extends State<QuizScreen> {
       body: Center(
         child: Container(
           padding: EdgeInsets.all(16.0),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              if (_currentQuestionIndex < widget.questions.length)
-                ...[
-                  Text(
-                    widget.questions[_currentQuestionIndex]['question'] as String,
-                    style: TextStyle(fontSize: 24),
-                    textAlign: TextAlign.center,
-                  ),
-                  SizedBox(height: 20),
-
-                  if (widget.questions[_currentQuestionIndex].containsKey('image'))
-                    Image.asset(
-                      widget.questions[_currentQuestionIndex]['image'] as String,
-                      height: 200,
-                      width: double.infinity,
-                      fit: BoxFit.contain,
-                    ),
-                  SizedBox(height: 20),
-
-                  ...(widget.questions[_currentQuestionIndex]['answers'] as List<Map<String, Object>>).map((answer) {
-                    return Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 8.0),
-                      child: ElevatedButton(
-                        onPressed: () => _answerQuestion(answer['score'] as int, answer['text'] as String),
-                        child: Text(answer['text'] as String),
-                        style: ElevatedButton.styleFrom(
-                          padding: EdgeInsets.symmetric(vertical: 16.0),
-                        ),
-                      ),
-                    );
-                  }).toList(),
-                ]
-              else
-                Column(
+          child: _currentQuestionIndex < widget.questions.length
+              ? Column(
                   mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
                     Text(
-                      'You scored $_score/${widget.questions.length}',
+                      widget.questions[_currentQuestionIndex]['question'] as String,
                       style: TextStyle(fontSize: 24),
                       textAlign: TextAlign.center,
                     ),
                     SizedBox(height: 20),
-                    if (_incorrectAnswers.isNotEmpty) ...[
-                      Text('Review Incorrect Answers:', style: TextStyle(fontSize: 20)),
-                      SizedBox(height: 10),
-                      ..._incorrectAnswers.map((incorrect) => Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 4.0),
-                        child: Text(
-                          '${incorrect['question']}\n'
-                          'Your Answer: ${incorrect['selectedAnswer']}\n'
-                          'Correct Answer: ${incorrect['correctAnswer']}\n',
-                          style: TextStyle(fontSize: 20, color: const Color.fromARGB(255, 255, 191, 187)),
+                    if (widget.questions[_currentQuestionIndex].containsKey('image'))
+                      Image.asset(
+                        widget.questions[_currentQuestionIndex]['image'] as String,
+                        height: 200,
+                        width: double.infinity,
+                        fit: BoxFit.contain,
+                      ),
+                    SizedBox(height: 20),
+                    ...(widget.questions[_currentQuestionIndex]['answers'] as List<Map<String, Object>>).map((answer) {
+                      return Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 8.0),
+                        child: ElevatedButton(
+                          onPressed: () => _answerQuestion(answer['score'] as int, answer['text'] as String),
+                          child: Text(answer['text'] as String),
+                          style: ElevatedButton.styleFrom(
+                            padding: EdgeInsets.symmetric(vertical: 16.0),
+                          ),
                         ),
-                      )),
-                    ],
-                    ElevatedButton(
-                      onPressed: _restartQuiz,
-                      child: Text('Restart Quiz'),
-                    ),
+                      );
+                    }).toList(),
                   ],
+                )
+              : SingleChildScrollView(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: [
+                      Text(
+                        'You scored $_score/${widget.questions.length}',
+                        style: TextStyle(
+                          fontSize: 24,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.black,
+                        ),
+                        textAlign: TextAlign.center,
+                      ),
+                      SizedBox(height: 20),
+                      if (_incorrectAnswers.isNotEmpty) ...[
+                        Text(
+                          'Review Incorrect Answers:',
+                          style: TextStyle(
+                            fontSize: 22,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.black,
+                          ),
+                          textAlign: TextAlign.center,
+                        ),
+                        SizedBox(height: 20),
+                        ListView.builder(
+                          shrinkWrap: true,
+                          physics: NeverScrollableScrollPhysics(),
+                          itemCount: _incorrectAnswers.length,
+                          itemBuilder: (context, index) {
+                            final incorrect = _incorrectAnswers[index];
+                            return Card(
+                              margin: EdgeInsets.symmetric(vertical: 10),
+                              color: Colors.grey[200], // Light card background
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                              elevation: 5, // Slight shadow for contrast
+                              child: Padding(
+                                padding: const EdgeInsets.all(16.0),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      'Question:',
+                                      style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 16,
+                                        color: Colors.black,
+                                      ),
+                                    ),
+                                    Text(
+                                      incorrect['question'],
+                                      style: TextStyle(
+                                        fontSize: 16,
+                                        color: Colors.black,
+                                      ),
+                                    ),
+                                    SizedBox(height: 10),
+                                    Text(
+                                      'Your Answer:',
+                                      style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.red,
+                                        fontSize: 16,
+                                      ),
+                                    ),
+                                    Text(
+                                      incorrect['selectedAnswer'],
+                                      style: TextStyle(fontSize: 16, color: Colors.black),
+                                    ),
+                                    SizedBox(height: 10),
+                                    Text(
+                                      'Correct Answer:',
+                                      style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.green,
+                                        fontSize: 16,
+                                      ),
+                                    ),
+                                    Text(
+                                      incorrect['correctAnswer'],
+                                      style: TextStyle(fontSize: 16, color: Colors.black),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            );
+                          },
+                        ),
+                      ],
+                      SizedBox(height: 20),
+                      ElevatedButton(
+                        onPressed: _restartQuiz,
+                        style: ElevatedButton.styleFrom(
+                          padding: EdgeInsets.symmetric(vertical: 16),
+                          backgroundColor: Colors.blueAccent,
+                        ),
+                        child: Text(
+                          'Restart Quiz',
+                          style: TextStyle(
+                            fontSize: 18,
+                            color: Colors.white,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
-            ],
-          ),
         ),
       ),
     );
