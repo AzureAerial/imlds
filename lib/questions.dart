@@ -31,7 +31,7 @@ List<Map<String, Object>> generalQuestions = [
     'answers': [
       {'text': 'Vision only', 'score': 0},
       {'text': 'Coordination only', 'score': 0},
-      {'text': 'Judgement and skill', 'score': 1},
+      {'text': 'Judgment and skill', 'score': 1},
     ],
   },
   {
@@ -127,7 +127,7 @@ List<Map<String, Object>> generalQuestions = [
     'answers': [
       {'text': 'Vision', 'score': 0},
       {'text': 'Coordination', 'score': 0},
-      {'text': 'Judgement', 'score': 1},
+      {'text': 'Judgment', 'score': 1},
     ],
   },
 ];

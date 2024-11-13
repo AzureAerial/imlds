@@ -34,7 +34,7 @@ class _FlashcardsScreenState extends State<FlashcardsScreen> {
     {'question': 'If you want to get off of a freeway, but you missed your exit. You should:', 'answer': 'Go to the next exit, and get off of the freeway there.'},
     {'question': 'To avoid last-minute braking, or the need to turn, you should look down the road at least:', 'answer': '10-15 seconds ahead of your vehicle.'},
     {'question': 'A bicyclist differs from a motorist in that he isn’t required to:', 'answer': 'Insure the bicycle.'},
-    {'question': 'Most traffic crashes are caused by:', 'answer': 'Poor driver judgement.'},
+    {'question': 'Most traffic crashes are caused by:', 'answer': 'Poor driver judgment.'},
     {'question': 'A copy of the vehicle inspection certificate:', 'answer': 'It should be kept in the vehicle.'},
     {'question': 'Many drivers get into serious trouble while driving a vehicle because:', 'answer': 'They do not understand or inform themselves of the legal responsibilities of having their license.'},
     {'question': 'You are waiting in the intersection to complete a left turn. You should:', 'answer': 'Signal and keep your wheels straight.'},
